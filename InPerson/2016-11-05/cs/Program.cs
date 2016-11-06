@@ -12,12 +12,13 @@ namespace ConsoleApplication
             Dictionary<int,int> tree = new Dictionary<int,int>();
             tree.Add(0, 10);
             tree.Add(1, 11);
-            tree.Add(2, 9);
+            tree.Add(2, 8);
             tree.Add(3, 13);
             tree.Add(4, 12);
             tree.Add(5, 13);
-            tree.Add(6, 8);
-
+            tree.Add(6, 9);
+            tree.Add(13, 10);
+            tree.Add(27, 11);
 
            int[] result = LongestConsecutiveSequence(tree);
            Print(result);
