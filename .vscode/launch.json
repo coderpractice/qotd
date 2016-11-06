@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceRoot}/InPerson/2016-11-05/extremecorners.js",
+            "program": "${workspaceRoot}/InPerson/2016-11-05/app.js",
             "cwd": "${workspaceRoot}"
         },
         {
