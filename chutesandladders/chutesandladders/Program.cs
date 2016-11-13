@@ -97,6 +97,7 @@ namespace chutesandladders
             tail--;
 
             int current = 0;
+            //Fix the min heap
             while (current < tail)
             {
                 int left = LeftChild(current);
@@ -185,6 +186,7 @@ namespace chutesandladders
             return neighbours.ToArray();
         }
 
+
         static int MinimumMoves(Dictionary<int /*Tail */, int /* Head */> ladders, 
             Dictionary<int /*Head */,int /*Tail*/> chutes)
         {
@@ -193,27 +195,29 @@ namespace chutesandladders
             MinHeap minHeap = new MinHeap();
             minHeap.Add(0, 0);
 
+            //Runs through basic Dijkastra's algorithm for shortest distance
             while (!minHeap.IsEmpty())
             {
                 Node current = minHeap.Remove();
+                
+                //Get all unvisited neighbours
                 var neighbours = GetNeighbours(current.Data, ladders, chutes).Where(n => !visited.Contains(n)).ToArray();
 
                 foreach (var neighbour in neighbours)
                 {
-                    if(neighbour == 100)
+                    //If we reached 100 then return
+                    if (neighbour == 100)
                     {
                         return current.Priority + 1;
                     }
                     int currDist;
+                    //Update the distance of the neighbour if > current.Priority +1 or if not set yet
                     if (!distances.TryGetValue(neighbour, out currDist) || currDist > current.Priority + 1)
                     {
                         distances[neighbour] = current.Priority + 1;
                         minHeap.Add(neighbour, current.Priority + 1);
                     }
                 }
-                //add neighbours of 0 to queue with moves +1
-                //update distance of all neighbours with moves +1 if either the neighbour is not in dist or if dist for neighbour is greater than moves +1
-                //pick the neighbour with least priority, repeast until reached 100
             }
             return -1;
         } 
