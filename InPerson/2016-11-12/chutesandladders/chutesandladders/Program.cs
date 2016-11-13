@@ -69,7 +69,7 @@ namespace chutesandladders
         List<Node> queue = new List<Node>();
         int tail = 0;
         public void Add(int data, int priority)
-        {   
+        {
             queue.Add(new Node(data, priority));
             while(tail >0 && queue[GetParent(tail)] > queue[tail])
             {
@@ -187,7 +187,7 @@ namespace chutesandladders
         }
 
 
-        static int MinimumMoves(Dictionary<int /*Tail */, int /* Head */> ladders, 
+        static int MinimumMoves(Dictionary<int /*Tail */, int /* Head */> ladders,
             Dictionary<int /*Head */,int /*Tail*/> chutes)
         {
             Dictionary<int /* cell */, int /*distance*/> distances = new Dictionary<int, int>();
@@ -199,7 +199,7 @@ namespace chutesandladders
             while (!minHeap.IsEmpty())
             {
                 Node current = minHeap.Remove();
-                
+
                 //Get all unvisited neighbours
                 var neighbours = GetNeighbours(current.Data, ladders, chutes).Where(n => !visited.Contains(n)).ToArray();
 
@@ -218,8 +218,9 @@ namespace chutesandladders
                         minHeap.Add(neighbour, current.Priority + 1);
                     }
                 }
+                visited.Add(current.Data);
             }
             return -1;
-        } 
+        }
     }
 }
