@@ -104,11 +104,6 @@ namespace Knight
             return new Tuple<int, int>(cell.Item1 + row, cell.Item2 + col);
         }
 
-        private static bool AreEqual(Cell start, Cell end)
-        {
-            throw new NotImplementedException();
-        }
-
         private static bool IsValid(Cell cell)
         {
             return InBound(cell.Item1) && InBound(cell.Item2);
